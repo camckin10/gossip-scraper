@@ -26,4 +26,6 @@ var ArticleSchema = new Schema({
     }]
 });
 
-module.exports = mongoose.model("Note", NoteSchema);
+var Article = mongoose.model("Article", ArticleSchema);
+
+module.exports = "Headline";

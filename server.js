@@ -21,6 +21,15 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+//requiring all files from controllers folder
+require("./controllers/fetch.js")(app);
+require("./controllers/headline.js")(app);
+require("./controllers/note.js")(app);
+require("./controllers/scrape.js")(app);
+
+
+
+
 //mongoose connection
 //mongoose can now leverage Promises
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
@@ -103,6 +112,12 @@ mongoose.connect(MONGODB_URI, {
 //         .catch(function(err) {
 //             res.json(err);
 //         });
+// });
+
+// app.use(express.static(path.join(__dirname, 'public')));
+// //Return the index for any other GET request
+// app.get('/*', function(req, res) {
+//     res.sendFile('home.handlebars', { root: path.join(__dirname, 'public') });
 // });
 
 app.listen(PORT, function() {
